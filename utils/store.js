@@ -16,12 +16,12 @@ const FirestoreStore = {
   async addEmployee(empData) {
     if (!window.db) throw new Error('Firestore is not initialized');
     try {
-      const payload = {
-        ...empData,
-        password: empData.password ? await hashPassword(empData.password) : '',
-        createdAt: new Date().toISOString(),
-        requirePasswordChange: !!empData.requirePasswordChange
-      };
+      const payload = { ...empData };
+      const plainPassword = typeof payload.password === 'string' ? payload.password : '';
+      const isAlreadyHashed = /^[a-f0-9]{64}$/i.test(plainPassword);
+      payload.password = plainPassword && !isAlreadyHashed ? await hashPassword(plainPassword) : plainPassword;
+      payload.createdAt = new Date().toISOString();
+      payload.requirePasswordChange = !!payload.requirePasswordChange;
 
       const ref = await window.db.collection('employees').add(payload);
       return { id: ref.id, ...payload };
@@ -36,7 +36,8 @@ const FirestoreStore = {
     try {
       const payload = { ...empData };
       if (typeof payload.password === 'string' && payload.password) {
-        payload.password = await hashPassword(payload.password);
+        const isAlreadyHashed = /^[a-f0-9]{64}$/i.test(payload.password);
+        payload.password = isAlreadyHashed ? payload.password : await hashPassword(payload.password);
       }
 
       await window.db.collection('employees').doc(id).update(payload);
