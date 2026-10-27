@@ -1,0 +1,175 @@
+[
+  {
+    "name": "employee",
+    "fields": [
+      {
+        "name": "name",
+        "type": "text",
+        "description": "Employee full name or username",
+        "options": null
+      },
+      {
+        "name": "password",
+        "type": "text",
+        "description": "Login password",
+        "options": null
+      },
+      {
+        "name": "role",
+        "type": "text",
+        "description": "User role",
+        "options": [
+          "admin",
+          "employee",
+          "manager",
+          "assistant"
+        ]
+      },
+      {
+        "name": "adminLeaveBalance",
+        "type": "number",
+        "description": "Total administrative leave days allowed",
+        "options": null
+      },
+      {
+        "name": "sickLeaveBalance",
+        "type": "number",
+        "description": "Total sick leave days allowed",
+        "options": null
+      },
+      {
+        "name": "requirePasswordChange",
+        "type": "bool",
+        "description": "Flag to force password change on next login",
+        "options": null
+      },
+      {
+        "name": "deviceToken",
+        "type": "text",
+        "description": "Device token for binding the user to a specific device",
+        "options": null
+      }
+    ]
+  },
+  {
+    "name": "attendance_log",
+    "fields": [
+      {
+        "name": "employeeId",
+        "type": "text",
+        "description": "ID of the employee",
+        "options": null
+      },
+      {
+        "name": "type",
+        "type": "text",
+        "description": "Type of log (in or out)",
+        "options": [
+          "in",
+          "out"
+        ]
+      },
+      {
+        "name": "timestamp",
+        "type": "datetime",
+        "description": "Time of the attendance action",
+        "options": null
+      }
+    ]
+  },
+  {
+    "name": "leave_request",
+    "fields": [
+      {
+        "name": "employeeId",
+        "type": "text",
+        "description": "ID of the employee requesting leave",
+        "options": null
+      },
+      {
+        "name": "date",
+        "type": "text",
+        "description": "Date of the leave",
+        "options": null
+      },
+      {
+        "name": "type",
+        "type": "text",
+        "description": "Type of leave (administrative, sick, hourly)",
+        "options": [
+          "administrative",
+          "sick",
+          "hourly"
+        ]
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "description": "Status of the request",
+        "options": [
+          "pending",
+          "approved",
+          "rejected"
+        ]
+      },
+      {
+        "name": "startTime",
+        "type": "text",
+        "description": "Start time for hourly leave",
+        "options": null
+      },
+      {
+        "name": "duration",
+        "type": "number",
+        "description": "Duration in hours for hourly leave",
+        "options": null
+      }
+    ]
+  },
+  {
+    "name": "setting",
+    "fields": [
+      {
+        "name": "key",
+        "type": "text",
+        "description": "Setting key",
+        "options": null
+      },
+      {
+        "name": "value",
+        "type": "text",
+        "description": "Setting value in JSON string",
+        "options": null
+      }
+    ]
+  },
+  {
+    "name": "notification",
+    "fields": [
+      {
+        "name": "employeeId",
+        "type": "text",
+        "description": "ID of the employee",
+        "options": null
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "description": "Notification title",
+        "options": null
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "description": "Notification body",
+        "options": null
+      },
+      {
+        "name": "isRead",
+        "type": "bool",
+        "description": "Whether the notification has been read",
+        "options": null
+      }
+    ]
+  }
+]
