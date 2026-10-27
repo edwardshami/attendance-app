@@ -1,0 +1,121 @@
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>نظام الحضور والانصراف و الاجازات</title>
+    <meta name="description" content="برنامج لحضور وانصراف الموظفين و اجازاتهم">
+
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#059669">
+
+    <link rel="icon" href="https://app.trickle.so/storage/public/images/usr_1e29a98360000001/1ed4cd2b-327b-47e0-9710-1b450db26e4e.jpeg">
+    <link rel="apple-touch-icon" href="https://app.trickle.so/storage/public/images/usr_1e29a98360000001/1ed4cd2b-327b-47e0-9710-1b450db26e4e.jpeg">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="manifest" href="manifest.json">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&amp;display=swap" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+        @layer theme {
+        :root {
+            --primary-color: #059669; /* Emerald 600 */
+            --primary-hover: #047857; /* Emerald 700 */
+            --secondary-color: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --bg-main: #f9fafb;
+            --bg-card: #ffffff;
+            --border-color: #f3f4f6;
+            --danger-color: #ef4444;
+        }
+        .dark {
+            --primary-color: #059669;
+            --primary-hover: #047857;
+            --secondary-color: #374151;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --bg-main: #111827;
+            --bg-card: #1f2937;
+            --border-color: #374151;
+        }
+    }
+
+    @layer base {
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    }
+
+    @layer components {
+        .btn {
+            @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2;
+        }
+        .btn-primary {
+            @apply bg-[var(--primary-color)] text-white hover:bg-[var(--primary-hover)];
+        }
+        .btn-danger {
+            @apply bg-red-500 text-white hover:bg-red-600;
+        }
+        .btn-outline {
+            @apply border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700;
+        }
+        .card {
+            @apply bg-[var(--bg-card)] rounded-xl shadow-sm border border-[var(--border-color)] p-6 transition-colors duration-300;
+        }
+        .input-field {
+            @apply w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent outline-none transition-all;
+        }
+    }
+    </style>
+    <meta property="og:title" content="نظام الحضور والانصراف و الاجازات">
+    <meta property="og:description" content="برنامج لحضور وانصراف الموظفين و اجازاتهم">
+    <meta name="twitter:title" content="نظام الحضور والانصراف و الاجازات">
+    <meta name="twitter:description" content="برنامج لحضور وانصراف الموظفين و اجازاتهم">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="utils/store.js"></script>
+    <script type="text/babel" src="components/Login.js"></script>
+    <script type="text/babel" src="components/Navbar.js"></script>
+    <script type="text/babel" src="components/EmployeeView.js"></script>
+    <script type="text/babel" src="components/AdminView.js"></script>
+    <script type="text/babel" src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
